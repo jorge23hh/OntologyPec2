@@ -1,0 +1,899 @@
+@prefix : <http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@base <http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/> .
+
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6> rdf:type owl:Ontology ;
+                                                                             rdfs:comment """This ontology is created with the aim of analysing and representing different factors and aspects that encompass the satisfaction of passengers surveyed by a flight.
+
+Created by Jorge Rodríguez Torres and Paula Calero Adalid""" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#isRuleEnabled
+:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#sameAs
+rdfs:sameAs rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasAirline
+:hasAirline rdf:type owl:ObjectProperty ,
+                     owl:AsymmetricProperty ;
+            rdfs:domain :Review ;
+            rdfs:range :Airline ;
+            rdfs:comment "indicates which airline a rating refers to" ;
+            rdfs:label "hasAirline" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasCountry
+:hasCountry rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ,
+                     owl:AsymmetricProperty ;
+            rdfs:domain :Passenger ;
+            rdfs:range :Country ;
+            rdfs:comment "passenger's country" ;
+            rdfs:label "hasCountry" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasDatePublished
+:hasDatePublished rdf:type owl:ObjectProperty ,
+                           owl:FunctionalProperty ,
+                           owl:AsymmetricProperty ;
+                  rdfs:domain :Review ;
+                  rdfs:range :DatePublished ;
+                  rdfs:comment "refers to the date on which a valuation is published." ;
+                  rdfs:label "hasDatePublished" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasSeat
+:hasSeat rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ,
+                  owl:AsymmetricProperty ;
+         rdfs:domain :Review ;
+         rdfs:range :SeatType ;
+         rdfs:comment "Passenger who made a review" ;
+         rdfs:label "hasSeat" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasTypeLeisure
+:hasTypeLeisure rdf:type owl:ObjectProperty ,
+                         owl:FunctionalProperty ,
+                         owl:AsymmetricProperty ;
+                rdfs:domain :Passenger ;
+                rdfs:range :Leisure ;
+                rdfs:comment "indicates the type of leisure travel undertaken by a passenger, classified as a couple, single or family." ;
+                rdfs:label "hasTypeLeisure" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasTypeSeat
+:hasTypeSeat rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ,
+                      owl:AsymmetricProperty ;
+             rdfs:domain :Passenger ;
+             rdfs:range :SeatType ;
+             rdfs:comment "indicates the type of seat a passenger has, it can be economy, business or first class." ;
+             rdfs:label "hasTypeSeat" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#hasRating
+:hasRating rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :SatisfactionRating ;
+           rdfs:range xsd:integer ;
+           rdfs:comment "numerical evaluation" ;
+           rdfs:label "hasRating" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasAPublicationDate
+:hasAPublicationDate rdf:type owl:DatatypeProperty ,
+                              owl:FunctionalProperty ;
+                     rdfs:domain :DatePublished ;
+                     rdfs:range xsd:date ;
+                     rdfs:comment "indicates the date of publication of the review" ;
+                     rdfs:label "hasAPublicationDate" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasDestination
+:hasDestination rdf:type owl:DatatypeProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Destination ;
+                rdfs:range xsd:string ;
+                owl:propertyDisjointWith :hasOrigin ;
+                rdfs:comment "indicates the destination city of a flight" ;
+                rdfs:label "hasDestination" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasOrigin
+:hasOrigin rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :Origin ;
+           rdfs:range xsd:string ;
+           rdfs:comment "indicates the city of origin of a flight" ;
+           rdfs:label "hasOrigin" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasTitle
+:hasTitle rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Title ;
+          rdfs:range xsd:string ;
+          rdfs:comment "indicates the title of a review" ;
+          rdfs:label "hasTitle" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasVerification
+:hasVerification rdf:type owl:DatatypeProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Verification ;
+                 rdfs:range xsd:boolean ;
+                 rdfs:comment "tells us whether a review is verified or not." ;
+                 rdfs:label "hasVerification" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#SatisfactionRating
+:SatisfactionRating rdf:type owl:Class ;
+                    rdfs:subClassOf :Rating ;
+                    rdfs:label "SatisfactionRating" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Airline
+:Airline rdf:type owl:Class ;
+         rdfs:comment "Airline on which the survey is conducted" ;
+         rdfs:label "Airline" ;
+         rdfs:sameAs "https://dbpedia.org/page/Airline" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Author
+:Author rdf:type owl:Class ;
+        rdfs:subClassOf :Review ;
+        rdfs:comment "is the name of the author of the review" ;
+        rdfs:label "Author" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Bussines
+:Bussines rdf:type owl:Class ;
+          rdfs:subClassOf :TypePassenger ;
+          owl:disjointWith :Leisure ;
+          rdfs:comment "type of business passenger" ;
+          rdfs:label "Bussiness" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Connectivity
+:Connectivity rdf:type owl:Class ;
+              rdfs:subClassOf :Wellness ;
+              owl:disjointWith :Entertaiment ,
+                               :SeatConfort ;
+              rdfs:comment "numerical assessment of the connectivity services offered by the airline" ;
+              rdfs:label "Connectivity" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Country
+:Country rdf:type owl:Class ;
+         rdfs:comment "country of passenger surveyed" ;
+         rdfs:label "Country" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Couple
+:Couple rdf:type owl:Class ;
+        rdfs:subClassOf :Leisure ;
+        owl:disjointWith :Family ,
+                         :Solo ;
+        rdfs:comment "type of leisure passenger as a couple" ;
+        rdfs:label "Couple" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/DatePublished
+:DatePublished rdf:type owl:Class ;
+               rdfs:subClassOf :Review ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasDatePublished ;
+                                 owl:someValuesFrom :Review
+                               ] ;
+               rdfs:comment "is the date of the review" ;
+               rdfs:label "DatePublished" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Destination
+:Destination rdf:type owl:Class ;
+             rdfs:subClassOf :Location ;
+             owl:disjointWith :Origin ;
+             rdfs:comment "Final destination of flight" ;
+             rdfs:label "Destination" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Dissatisfied
+:Dissatisfied rdf:type owl:Class ;
+              rdfs:subClassOf :SatisfactionRating ;
+              owl:disjointWith :PartiallySatisfied ,
+                               :Satisfied ;
+              rdfs:comment "low numerical customer rating of the services provided" ;
+              rdfs:label "Dissatisfied" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Economic
+:Economic rdf:type owl:Class ;
+          rdfs:subClassOf :SeatType ;
+          owl:disjointWith :Executive ,
+                           :FirstClass ;
+          rdfs:comment "economic seat type" ;
+          rdfs:label "Economic" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Entertaiment
+:Entertaiment rdf:type owl:Class ;
+              rdfs:subClassOf :Wellness ;
+              owl:disjointWith :SeatConfort ;
+              rdfs:comment "numerical assessment of the entertainment services offered by the airline" ;
+              rdfs:label "Entertaiment" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Executive
+:Executive rdf:type owl:Class ;
+           rdfs:subClassOf :SeatType ;
+           owl:disjointWith :FirstClass ;
+           rdfs:comment "type of executive seat" ;
+           rdfs:label "Executive" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Family
+:Family rdf:type owl:Class ;
+        rdfs:subClassOf :Leisure ;
+        owl:disjointWith :Solo ;
+        rdfs:comment "type of family leisure passenger" ;
+        rdfs:label "Family" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/FirstClass
+:FirstClass rdf:type owl:Class ;
+            rdfs:subClassOf :SeatType ;
+            rdfs:comment "first class seat type" ;
+            rdfs:label "FirstClass" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Flight
+:Flight rdf:type owl:Class ;
+        rdfs:comment "Flight over which the survey is conducted" ;
+        rdfs:label "Flight" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/FoodService
+:FoodService rdf:type owl:Class ;
+             rdfs:subClassOf :Service ;
+             owl:disjointWith :GroundService ,
+                              :ServiceOnBoard ;
+             rdfs:comment "numerical assessment of in-flight catering services provided by the company" ;
+             rdfs:label "FoodService" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/GroundService
+:GroundService rdf:type owl:Class ;
+               rdfs:subClassOf :Service ;
+               owl:disjointWith :ServiceOnBoard ;
+               rdfs:comment "numerical assessment of the ground handling services provided by the company" ;
+               rdfs:label "GroundService" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Leisure
+:Leisure rdf:type owl:Class ;
+         rdfs:subClassOf :TypePassenger ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasTypeLeisure ;
+                           owl:allValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :Couple
+                                                             :Family
+                                                             :Solo
+                                                           )
+                                             ]
+                         ] ;
+         rdfs:comment "type of passenger leisure" ;
+         rdfs:label "Leisure" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf :Flight ;
+          rdfs:comment "Flight-related locations" ;
+          rdfs:label "Location" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/MoneyValue
+:MoneyValue rdf:type owl:Class ;
+            rdfs:subClassOf :Review ;
+            rdfs:comment "numerical assessment of the value of money relative to services" ;
+            rdfs:label "MoneyValue" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Origin
+:Origin rdf:type owl:Class ;
+        rdfs:subClassOf :Location ;
+        rdfs:comment "Final origin of flight" ;
+        rdfs:label "Origin" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/PartiallySatisfied
+:PartiallySatisfied rdf:type owl:Class ;
+                    rdfs:subClassOf :SatisfactionRating ;
+                    owl:disjointWith :Satisfied ;
+                    rdfs:comment "average numerical customer rating of services rendered" ;
+                    rdfs:label "PartiallySatisfied" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Passenger
+:Passenger rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasCountry ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Country
+                           ] ;
+           rdfs:comment "Respondent passenger information" ;
+           rdfs:label "Passenger" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Plane
+:Plane rdf:type owl:Class ;
+       rdfs:subClassOf :Flight ;
+       rdfs:comment "Aircraft in charge of the flight" ;
+       rdfs:label "Plane" ;
+       rdfs:sameAs "https://dbpedia.org/page/Airplane" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Rating
+:Rating rdf:type owl:Class ;
+        rdfs:subClassOf :Review ;
+        rdfs:comment "valoración numérica del cliente respecto a los servicios prestados" ;
+        rdfs:label "Rating" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Recommended
+:Recommended rdf:type owl:Class ;
+             rdfs:subClassOf :Review ;
+             rdfs:comment "Collects data on whether the client would recommend the services provided." ;
+             rdfs:label "Recommended" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Review
+:Review rdf:type owl:Class ;
+        rdfs:comment "is the full assessment of a passenger" ;
+        rdfs:label "Review" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Satisfied
+:Satisfied rdf:type owl:Class ;
+           rdfs:subClassOf :SatisfactionRating ;
+           rdfs:comment "high numerical customer rating of the services provided" ;
+           rdfs:label "Satisfied" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/SeatConfort
+:SeatConfort rdf:type owl:Class ;
+             rdfs:subClassOf :Wellness ;
+             rdfs:comment "numerical assessment of the seating comfort offered by the airline" ;
+             rdfs:label "SeatConfort" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/SeatType
+:SeatType rdf:type owl:Class ;
+          rdfs:subClassOf :Passenger ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasTypeSeat ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :Economic
+                                                              :Executive
+                                                              :FirstClass
+                                                            )
+                                              ]
+                          ] ;
+          rdfs:comment "type of passenger seat surveyed" ;
+          rdfs:label "SeatType" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Service
+:Service rdf:type owl:Class ;
+         rdfs:comment "services provided by the company" ;
+         rdfs:label "Service" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/ServiceOnBoard
+:ServiceOnBoard rdf:type owl:Class ;
+                rdfs:subClassOf :Service ;
+                rdfs:comment "numerical evaluation of the on-board services provided by the company" ;
+                rdfs:label "ServiceOnBoard" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Solo
+:Solo rdf:type owl:Class ;
+      rdfs:subClassOf :Leisure ;
+      rdfs:comment "type of solo leisure passenger" ;
+      rdfs:label "Solo" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Text
+:Text rdf:type owl:Class ;
+      rdfs:subClassOf :Review ;
+      rdfs:comment "full text of the review" ;
+      rdfs:label "Text" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Title
+:Title rdf:type owl:Class ;
+       rdfs:subClassOf :Review ;
+       rdfs:comment "title of the review" ;
+       rdfs:label "Title" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/TypePassenger
+:TypePassenger rdf:type owl:Class ;
+               rdfs:subClassOf :Passenger ;
+               rdfs:comment "type of passenger surveyed" ;
+               rdfs:label "TypePassenger" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Verification
+:Verification rdf:type owl:Class ;
+              rdfs:subClassOf :Review ;
+              rdfs:comment "tells us whether the review is verified or not." ;
+              rdfs:label "Verification" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Wellness
+:Wellness rdf:type owl:Class ;
+          rdfs:comment "various comfort services offered by the airline" ;
+          rdfs:label "Wellness" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#1
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#1> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 1 out of 10" ;
+                                                                              rdfs:label 1 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#1.0
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#1.0> rdf:type owl:NamedIndividual ,
+                                                                                         :GroundService ;
+                                                                                rdfs:comment "1.0 numerical rating out of 1 of the ground service from 1.0  to 5.0" ;
+                                                                                rdfs:label 1.0 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#10
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#10> rdf:type owl:NamedIndividual ,
+                                                                                        :Rating ;
+                                                                               rdfs:comment "rating of 10 out of 10" ;
+                                                                               rdfs:label 10 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 2 out of 10" ;
+                                                                              rdfs:label 2 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2.0
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2.0> rdf:type owl:NamedIndividual ,
+                                                                                         :GroundService ;
+                                                                                rdfs:comment "2.0 numerical rating out of 1 of the ground service from 1.0  to 5.0" ;
+                                                                                rdfs:label 2.0 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2023-10-28
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2023-10-28> rdf:type owl:NamedIndividual ,
+                                                                                                :DatePublished ;
+                                                                                       rdfs:comment "date of 28 October 2023" ;
+                                                                                       rdfs:label "2023-10-28"^^xsd:date .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2023-12-25
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2023-12-25> rdf:type owl:NamedIndividual ,
+                                                                                                :DatePublished ;
+                                                                                       rdfs:comment "fecha del 25 de diciembre de 2023" ;
+                                                                                       rdfs:label "2023-12-25"^^xsd:date .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2024-01-03
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2024-01-03> rdf:type owl:NamedIndividual ,
+                                                                                                :DatePublished ;
+                                                                                       rdfs:comment "date of 03 January 2024" ;
+                                                                                       rdfs:label "2024-01-03"^^xsd:date .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#3
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#3> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 3 out of 10" ;
+                                                                              rdfs:label 3 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#3.0
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#3.0> rdf:type owl:NamedIndividual ,
+                                                                                         :GroundService ;
+                                                                                rdfs:comment "3.0 numerical rating out of 1 of the ground service from 1.0  to 5.0" ;
+                                                                                rdfs:label 3.0 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#4
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#4> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 4 out of 10" ;
+                                                                              rdfs:label 4 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#4.0
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#4.0> rdf:type owl:NamedIndividual ,
+                                                                                         :GroundService ;
+                                                                                rdfs:comment "4.0 numerical rating out of 1 of the ground service from 1.0  to 5.0" ;
+                                                                                rdfs:label 4.0 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#5
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#5> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 5 out of 10" ;
+                                                                              rdfs:label 5 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#5.0
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#5.0> rdf:type owl:NamedIndividual ,
+                                                                                         :GroundService ;
+                                                                                rdfs:comment "5.0 numerical rating out of 1 of the ground service from 1.0  to 5.0" ;
+                                                                                rdfs:label 5.0 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#6
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#6> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 6 out of 10" ;
+                                                                              rdfs:label 6 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#7
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#7> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 7 out of 10" ;
+                                                                              rdfs:label 7 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#8
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#8> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 8 out of 10" ;
+                                                                              rdfs:label 8 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#9
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#9> rdf:type owl:NamedIndividual ,
+                                                                                       :Rating ;
+                                                                              rdfs:comment "rating of 9 out of 10" ;
+                                                                              rdfs:label 9 .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#ReallyImpressed!
+<http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#ReallyImpressed!> rdf:type owl:NamedIndividual ,
+                                                                                                      :Title ;
+                                                                                             rdfs:comment "review title" ;
+                                                                                             rdfs:label "ReallyImpressed!" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Brussels
+:Brussels rdf:type owl:NamedIndividual ,
+                   :Destination ;
+          rdfs:comment "City of Brussels" ;
+          rdfs:label "Brussels" ;
+          rdfs:sameAs "https://dbpedia.org/page/Brussels" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Chicago
+:Chicago rdf:type owl:NamedIndividual ,
+                  :Origin ;
+         rdfs:comment "City of Chicago" ;
+         rdfs:label "Chicago" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/CloseOnlineCheckIn3HoursBefore
+:CloseOnlineCheckIn3HoursBefore rdf:type owl:NamedIndividual ,
+                                         :Title ;
+                                rdfs:comment "review title" ;
+                                rdfs:label "CloseOnlineCheckIn3HoursBefore" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Doha
+:Doha rdf:type owl:NamedIndividual ,
+               :Origin ;
+      rdfs:comment "City of Doha" ;
+      rdfs:label "Doha" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/EightOfThe10FlightsHadDelays
+:EightOfThe10FlightsHadDelays rdf:type owl:NamedIndividual ,
+                                       :Title ;
+                              rdfs:comment "review title" ;
+                              rdfs:label "EightOfThe10FlightsHadDelays" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Ireland
+:Ireland rdf:type owl:NamedIndividual ,
+                  :Country ;
+         rdfs:comment "Country Ireland" ;
+         rdfs:label "Ireland" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Israel
+:Israel rdf:type owl:NamedIndividual ,
+                 :Country ;
+        rdfs:comment "Country Israel" ;
+        rdfs:label "Israel" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/London
+:London rdf:type owl:NamedIndividual ,
+                 :Origin ;
+        rdfs:comment "City of London" ;
+        rdfs:label "London" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Manchester
+:Manchester rdf:type owl:NamedIndividual ,
+                     :Origin ;
+            rdfs:comment "City of Manchester" ;
+            rdfs:label "Manchester" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/MikeAndresen
+:MikeAndresen rdf:type owl:NamedIndividual ,
+                       :Author ,
+                       :Passenger ;
+              rdfs:comment "Passenger Mike Andersen" ;
+              rdfs:label "MikeAndersen" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/No
+:No rdf:type owl:NamedIndividual ,
+             :Recommended ;
+    rdfs:comment "Negative recommendation from the author of the review" ;
+    rdfs:label "No" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Norway
+:Norway rdf:type owl:NamedIndividual ,
+                 :Country ;
+        rdfs:comment "Country Norway" ;
+        rdfs:label "Norway" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Perth
+:Perth rdf:type owl:NamedIndividual ,
+                :Destination ;
+       rdfs:comment "City of Perth" ;
+       rdfs:label "Perth" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Portugal
+:Portugal rdf:type owl:NamedIndividual ,
+                   :Country ;
+          rdfs:comment "Country Portugal" ;
+          rdfs:label "Portugal" ;
+          rdfs:sameAs "https://dbpedia.org/page/Portugal" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/QatarAirlines
+:QatarAirlines rdf:type owl:NamedIndividual ,
+                        :Airline ;
+               rdfs:comment "airline participating in the survey Qatar Airlines" ;
+               rdfs:label "QatarAirlines" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Ryanair
+:Ryanair rdf:type owl:NamedIndividual ,
+                  :Airline ;
+         rdfs:comment "airline participating in the survey Ryanair" ;
+         rdfs:label "Ryanair" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/SanFrancisco
+:SanFrancisco rdf:type owl:NamedIndividual ,
+                       :Destination ;
+              rdfs:comment "City of San Francisco" ;
+              rdfs:label "SanFrancisco" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/UnitedKingdom
+:UnitedKingdom rdf:type owl:NamedIndividual ,
+                        :Country ;
+               rdfs:comment "Country of United Kingdom" ;
+               rdfs:label "UnitedKingdom" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Warsaw
+:Warsaw rdf:type owl:NamedIndividual ,
+                 :Destination ;
+        rdfs:comment "City of Warsaw" ;
+        rdfs:label "Warsaw" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Yes
+:Yes rdf:type owl:NamedIndividual ,
+              :Recommended ;
+     rdfs:comment "Positive recommendation from the author of the review" ;
+     rdfs:label "Yes" .
+
+
+###  http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/review1
+:review1 rdf:type owl:NamedIndividual ,
+                  :Review ;
+         :hasAirline :QatarAirlines ;
+         :hasDatePublished <http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6#2023-10-28> ;
+         :hasRating 1 ;
+         :hasTitle "marred by incoveniences" ;
+         :hasVerification "false"^^xsd:boolean ;
+         rdfs:comment "a review of a flight" ;
+         rdfs:label "Review1" .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<urn:swrl:var#x> rdf:type swrl:Variable .
+
+<urn:swrl:var#w> rdf:type swrl:Variable .
+
+[ rdfs:comment "Partial satisfaction" ;
+   rdfs:label "PartiallySatisfied" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :SatisfactionRating ;
+                           swrl:argument1 <urn:swrl:var#x>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :hasRating ;
+                                      swrl:argument1 <urn:swrl:var#x> ;
+                                      swrl:argument2 <urn:swrl:var#w>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:greaterThan ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first <urn:swrl:var#w> ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 3 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                            swrl:builtin swrlb:lessThan ;
+                                                            swrl:arguments [ rdf:type rdf:List ;
+                                                                             rdf:first <urn:swrl:var#w> ;
+                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                        rdf:first 7 ;
+                                                                                        rdf:rest rdf:nil
+                                                                                      ]
+                                                                           ]
+                                                          ] ;
+                                                rdf:rest rdf:nil
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :PartiallySatisfied ;
+                           swrl:argument1 <urn:swrl:var#x>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdfs:comment "High Satisfied" ;
+   rdfs:label "Satisfied" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :SatisfactionRating ;
+                           swrl:argument1 <urn:swrl:var#x>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :hasRating ;
+                                      swrl:argument1 <urn:swrl:var#x> ;
+                                      swrl:argument2 <urn:swrl:var#w>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:greaterThan ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first <urn:swrl:var#w> ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 7 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Satisfied ;
+                           swrl:argument1 <urn:swrl:var#x>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdfs:comment "Low satisfaction" ;
+   rdfs:label "Dissatisfied" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :SatisfactionRating ;
+                           swrl:argument1 <urn:swrl:var#x>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                      swrl:propertyPredicate :hasRating ;
+                                      swrl:argument1 <urn:swrl:var#x> ;
+                                      swrl:argument2 <urn:swrl:var#w>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                 swrl:builtin swrlb:lessThan ;
+                                                 swrl:arguments [ rdf:type rdf:List ;
+                                                                  rdf:first <urn:swrl:var#w> ;
+                                                                  rdf:rest [ rdf:type rdf:List ;
+                                                                             rdf:first 3 ;
+                                                                             rdf:rest rdf:nil
+                                                                           ]
+                                                                ]
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :Dissatisfied ;
+                           swrl:argument1 <urn:swrl:var#x>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
