@@ -1,0 +1,181 @@
+{
+  "@context" : {
+    "hasTitle" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasTitle",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Bussines" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Bussines"
+    },
+    "Verification" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Verification"
+    },
+    "FoodService" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/FoodService"
+    },
+    "SatisfactionRating" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/SatisfactionRating"
+    },
+    "hasRating" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasRating",
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "Review" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Review"
+    },
+    "Country" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Country"
+    },
+    "Wellness" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Wellness"
+    },
+    "SeatConfort" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/SeatConfort"
+    },
+    "Recommended" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Recommended"
+    },
+    "Couple" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Couple"
+    },
+    "isRuleEnabled" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/isRuleEnabled"
+    },
+    "Leisure" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Leisure"
+    },
+    "DatePublished" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/DatePublished"
+    },
+    "Title" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Title"
+    },
+    "hasDestination" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasDestination",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "hasSeat" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasSeat",
+      "@type" : "@id"
+    },
+    "Destination" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Destination"
+    },
+    "hasAPublicationDate" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasAPublicationDate",
+      "@type" : "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "Location" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Location"
+    },
+    "hasDatePublished" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasDatePublished",
+      "@type" : "@id"
+    },
+    "Solo" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Solo"
+    },
+    "Origin" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Origin"
+    },
+    "Satisfied" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Satisfied"
+    },
+    "FirstClass" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/FirstClass"
+    },
+    "Entertaiment" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Entertaiment"
+    },
+    "Plane" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Plane"
+    },
+    "Passenger" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Passenger"
+    },
+    "Family" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Family"
+    },
+    "Executive" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Executive"
+    },
+    "hasTypeLeisure" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasTypeLeisure",
+      "@type" : "@id"
+    },
+    "Rating" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Rating"
+    },
+    "PartiallySatisfied" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/PartiallySatisfied"
+    },
+    "hasVerification" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasVerification",
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "Connectivity" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Connectivity"
+    },
+    "MoneyValue" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/MoneyValue"
+    },
+    "Airline" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Airline"
+    },
+    "Flight" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Flight"
+    },
+    "Author" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Author"
+    },
+    "Text" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Text"
+    },
+    "Dissatisfied" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Dissatisfied"
+    },
+    "TypePassenger" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/TypePassenger"
+    },
+    "GroundService" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/GroundService"
+    },
+    "hasOrigin" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasOrigin",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "hasAirline" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasAirline",
+      "@type" : "@id"
+    },
+    "ServiceOnBoard" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/ServiceOnBoard"
+    },
+    "sameAs" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#sameAs"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "Service" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Service"
+    },
+    "hasTypeSeat" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasTypeSeat",
+      "@type" : "@id"
+    },
+    "Economic" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/Economic"
+    },
+    "hasCountry" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/hasCountry",
+      "@type" : "@id"
+    },
+    "SeatType" : {
+      "@id" : "http://www.semanticweb.org/jorgestu/ontologies/2024/3/untitled-ontology-6/SeatType"
+    }
+  }
+}
